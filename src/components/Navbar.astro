@@ -1,0 +1,148 @@
+---
+// src/components/Navbar.astro
+const navLinks = [
+  { name: 'Inicio', href: '#inicio' },
+  { name: 'Siniestros', href: '#servicios' },
+  { name: 'El Estudio', href: '#nosotros' },
+];
+---
+
+<header 
+  id="navbar" 
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent bg-transparent"
+>
+  <div class="container mx-auto px-6">
+    <div class="flex justify-between items-center h-20 transition-all duration-300" id="nav-container">
+      
+      <a href="#" class="flex items-center gap-4 group z-50 relative">
+        <div class="relative w-14 h-14 flex items-center justify-center">
+           <span class="font-serif-logo text-5xl text-text-muted absolute left-0 top-0 z-0 opacity-50 group-hover:opacity-80 transition-opacity">E</span>
+           <span class="font-serif-logo text-5xl text-white absolute left-4 top-2 z-10 drop-shadow-lg">S</span>
+        </div>
+        
+        <div class="flex flex-col justify-center -mt-1">
+          <span class="font-serif-logo font-bold text-white text-xl leading-none tracking-widest">SEVILLA</span>
+          <span class="font-body text-[10px] uppercase font-bold text-silver-metallic tracking-[0.3em] group-hover:text-accent transition-colors">Abogados</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-10">
+        {navLinks.map((link) => (
+          <a 
+            href={link.href} 
+            class="text-sm font-bold text-gray-300 hover:text-white transition-colors uppercase tracking-widest font-title relative group"
+          >
+            {link.name}
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
+          </a>
+        ))}
+        
+        <a 
+          href="https://wa.me/5491100000000" 
+          target="_blank"
+          class="flex items-center gap-3 px-6 py-3 bg-accent hover:bg-accent-dark text-white text-xs font-bold uppercase tracking-[0.15em] rounded-sm transition-all shadow-lg hover:shadow-accent/50 hover:-translate-y-0.5 group"
+        >
+          <span>Tuve un Choque</span>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </a>
+      </nav>
+
+      <button 
+        id="menu-toggle" 
+        class="md:hidden relative z-50 w-12 h-12 flex items-center justify-center text-white focus:outline-none rounded-sm"
+        aria-label="Abrir menú"
+      >
+        <div class="relative w-6 h-5">
+          <span class="absolute top-0 left-0 w-full h-0.5 bg-white rounded-full transition-all duration-300 origin-center group-[.is-active]:rotate-45 group-[.is-active]:translate-y-2.5"></span>
+          <span class="absolute top-1/2 left-0 w-full h-0.5 bg-white rounded-full transition-all duration-300 -translate-y-1/2 group-[.is-active]:opacity-0"></span>
+          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-white rounded-full transition-all duration-300 origin-center group-[.is-active]:-rotate-45 group-[.is-active]:-translate-y-2.5"></span>
+        </div>
+      </button>
+
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="fixed inset-0 bg-primary z-40 flex flex-col justify-center items-center opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-gradient-to-b from-accent/20 to-transparent pointer-events-none"></div>
+    <nav class="flex flex-col items-center gap-8 relative z-10 w-full px-6">
+      {navLinks.map((link) => (
+        <a href={link.href} class="mobile-link text-4xl font-title font-bold text-white hover:text-accent transition-colors uppercase tracking-widest">{link.name}</a>
+      ))}
+      <div class="w-20 h-px bg-white/10 my-4"></div>
+      <a href="https://wa.me/5491100000000" class="mobile-link w-full max-w-xs py-4 bg-accent text-white font-title font-bold text-xl uppercase tracking-widest text-center rounded-sm shadow-xl">Hablar por WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Selección de elementos
+  const navbar = document.getElementById('navbar');
+  const navContainer = document.getElementById('nav-container');
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+  
+  let isMenuOpen = false;
+
+  // 1. CONTROL DEL SCROLL
+  function handleScroll() {
+    // CORRECCIÓN: Verificación de nulos antes de ejecutar lógica
+    if (!navbar || !navContainer || isMenuOpen) return;
+
+    if (window.scrollY > 20) {
+      navbar.classList.add('bg-primary/95', 'backdrop-blur-md', 'border-white/10', 'shadow-lg');
+      navbar.classList.remove('bg-transparent', 'border-transparent');
+      navContainer.classList.replace('h-20', 'h-16'); 
+    } else {
+      navbar.classList.remove('bg-primary/95', 'backdrop-blur-md', 'border-white/10', 'shadow-lg');
+      navbar.classList.add('bg-transparent', 'border-transparent');
+      navContainer.classList.replace('h-16', 'h-20'); 
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
+
+  // 2. LÓGICA DEL MENÚ MÓVIL
+  // CORRECCIÓN: Verificamos que todos los elementos existan antes de añadir eventos
+  if (menuToggle && mobileMenu && navbar) {
+    
+    menuToggle.addEventListener('click', () => {
+      isMenuOpen = !isMenuOpen;
+      menuToggle.classList.toggle('is-active');
+      
+      if (isMenuOpen) {
+        // ABRIR
+        navbar.classList.add('duration-0'); 
+        navbar.classList.remove('duration-300', 'bg-primary/95', 'backdrop-blur-md', 'shadow-lg', 'border-white/10');
+        navbar.classList.add('bg-transparent', 'border-transparent');
+        
+        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = 'hidden';
+        
+      } else {
+        // CERRAR
+        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+        
+        navbar.classList.remove('duration-0');
+        navbar.classList.add('duration-300');
+        handleScroll();
+      }
+    });
+
+    // CERRAR AL CLICKEAR UN LINK
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        isMenuOpen = false;
+        // CORRECCIÓN: Uso de ?. (Optional Chaining) por seguridad extra
+        menuToggle?.classList.remove('is-active');
+        mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+        
+        navbar?.classList.remove('duration-0');
+        navbar?.classList.add('duration-300');
+        handleScroll();
+      });
+    });
+  }
+</script>
