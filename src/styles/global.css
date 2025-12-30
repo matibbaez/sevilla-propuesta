@@ -1,21 +1,31 @@
-/* src/layouts/Layout.astro o global.css */
+/* src/styles/global.css */
 @import "tailwindcss";
-/* Outfit (Títulos modernos) + Inter (Lectura perfecta) */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@400;500;700&family=Inter:wght@300;400;500;700&display=swap');
+
+/* Playfair Display (Elegancia) + Inter (Lectura técnica) + Outfit (Modernidad) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+
 @theme {
-  /* Paleta Profesional */
-  --color-primary: #0B1120;      /* Azul Noche (Fondo) */
-  --color-surface: #151F32;      /* Azul Secundario (Tarjetas) */
-  --color-text-main: #FFFFFF;    /* Blanco Puro */
-  --color-text-muted: #94A3B8;   /* Gris Claro (Textos secundarios) */
-  --color-accent: #2563EB;       /* Azul Corporativo (Acción) */
-  --color-accent-dark: #1D4ED8;
-  --color-silver-metallic: #C0C0C0; 
-  --color-silver-gradient: linear-gradient(135deg, #E2E8F0 0%, #94A3B8 100%);
+  /* --- PALETA PREMIUM LEGAL --- */
   
-  --font-serif-logo: "Cinzel", serif; /* Nueva fuente para el logo */
-  --font-title: "Outfit", sans-serif;
-  --font-body: "Inter", sans-serif;
+  /* Fondo: Un azul muy profundo, casi negro, más sobrio que el anterior */
+  --color-primary: #0f172a;      
+  
+  /* Superficies: Tarjetas con un tono ligeramente más claro */
+  --color-surface: #1e293b;      
+
+  /* Textos */
+  --color-text-main: #F8FAFC;    /* Blanco Off-White (menos agresivo a la vista) */
+  --color-text-muted: #94A3B8;   /* Gris azulado elegante */
+  
+  /* Acento: DORADO / BRONCE (En lugar del azul eléctrico) */
+  /* Esto es lo que le da el toque "Abogado Top" */
+  --color-accent: #C5A059;       
+  --color-accent-dark: #A17F38;
+
+  /* Fuentes */
+  --font-serif-logo: "Playfair Display", serif; /* Fuente clásica para títulos serios */
+  --font-title: "Outfit", sans-serif;           /* Títulos modernos */
+  --font-body: "Inter", sans-serif;             /* Texto de lectura */
 }
 
 @layer base {
@@ -23,11 +33,17 @@
     background-color: var(--color-primary);
     color: var(--color-text-main);
     font-family: var(--font-body);
-    /* Fondo sutil para romper la planitud */
-    background-image: radial-gradient(circle at top right, #1e293b 0%, transparent 40%);
+    /* Fondo sutil tipo papel moneda o textura muy suave */
+    background-image: linear-gradient(to bottom, #0f172a, #0b1120);
   }
   
   h1, h2, h3, h4 {
     font-family: var(--font-title);
+    letter-spacing: -0.02em; /* Un poco más cerrado para verse más moderno */
+  }
+
+  /* Clase utilitaria para textos dorados elegantes */
+  .text-gold {
+    color: var(--color-accent);
   }
 }

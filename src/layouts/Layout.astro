@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Loader from "../components/Loader.astro";
 
 interface Props {
   title: string;
@@ -9,22 +10,24 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Estudio Sevilla | Abogados de Tránsito" />
+    <meta name="description" content="Estudio Sevilla | Abogados Especialistas en Tránsito y Siniestros" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <script is:inline src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <script is:inline>
-      const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
+      // Scroll suave pero más rápido para que no se sienta "pesado"
+      const lenis = new Lenis({ duration: 1.0, smoothWheel: true });
       function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
       requestAnimationFrame(raf);
-
+      
       document.addEventListener('click', (e) => {
         const link = e.target.closest('a');
         if (link && link.getAttribute('href')?.startsWith('#')) {
@@ -36,7 +39,6 @@ const { title } = Astro.props;
 
     <title>{title}</title>
   </head>
-  <body class="antialiased">
-    <slot />
+  <body class="antialiased selection:bg-[#C5A059] selection:text-white overflow-hidden"> <Loader /> <slot />
   </body>
 </html>
