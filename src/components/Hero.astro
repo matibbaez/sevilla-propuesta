@@ -1,5 +1,6 @@
 ---
 // src/components/Hero.astro
+import ClaimModal from './ClaimModal.astro'; 
 ---
 
 <section id="inicio" class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-primary">
@@ -27,8 +28,10 @@
             </div>
 
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 font-serif-logo">
-            Defendemos tu <br>
-            <span class="text-accent italic">Indemnización.</span>
+                La mejor indemnización <br>
+                <span class="block text-3xl md:text-5xl lg:text-6xl mt-2 font-light">
+                    <span class="text-accent italic font-bold">para los pibes de las motos.</span>
+                </span>
             </h1>
             
             <p class="text-gray-300 text-lg font-light mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
@@ -37,10 +40,13 @@
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-                <a href="https://wa.me/5491100000000" class="flex items-center justify-center gap-3 px-8 py-4 bg-accent hover:bg-accent-dark text-primary font-bold uppercase tracking-widest rounded-sm transition-all hover:-translate-y-1 shadow-lg hover:shadow-accent/20">
-                <span>Iniciar Reclamo</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </a>
+                <button 
+                  onclick="window.openClaimModal()" 
+                  class="flex items-center justify-center gap-3 px-8 py-4 bg-accent hover:bg-accent-dark text-primary font-bold uppercase tracking-widest rounded-sm transition-all hover:-translate-y-1 shadow-lg hover:shadow-accent/20 cursor-pointer"
+                >
+                  <span>Iniciar Reclamo</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
                 <a href="#servicios" class="px-8 py-4 border border-white/10 text-white font-bold uppercase tracking-widest rounded-sm hover:bg-white/5 transition-colors">
                 Nuestros Servicios
                 </a>
@@ -100,4 +106,6 @@
 
         </div>
     </div>
+
+    <ClaimModal />
 </section>

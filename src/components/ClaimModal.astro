@@ -1,0 +1,172 @@
+---
+// src/components/ClaimModal.astro
+---
+
+<div id="claim-modal" class="fixed inset-0 z-[60] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="fixed inset-0 bg-[#0f172a]/80 backdrop-blur-sm transition-opacity opacity-0 modal-backdrop" aria-hidden="true"></div>
+
+  <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+    <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+      
+      <div class="relative transform overflow-hidden rounded-sm bg-[#1e293b] border border-white/10 text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95 modal-panel">
+        
+        <div class="bg-[#0b1120] px-4 py-5 sm:px-6 border-b border-white/5 flex justify-between items-center">
+          <h3 class="text-xl font-serif-logo font-bold text-white leading-6" id="modal-title">
+            Iniciar Reclamo
+          </h3>
+          <button type="button" id="close-modal" class="text-gray-400 hover:text-white transition-colors">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="px-4 py-6 sm:p-6 space-y-5">
+            
+            <div>
+              <label for="company" class="block text-xs font-bold text-accent uppercase tracking-wider mb-2">
+                ¿Qué compañía te chocó?
+              </label>
+              <input type="text" id="company" name="company" placeholder="Ej: La Caja, Mapfre, etc." 
+                class="w-full bg-[#0f172a] border border-white/10 rounded-sm px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent transition-colors text-sm"
+              >
+            </div>
+
+            <div>
+              <label for="date" class="block text-xs font-bold text-accent uppercase tracking-wider mb-2">
+                Fecha del Accidente
+              </label>
+              <input type="date" id="date" name="date" 
+                class="w-full bg-[#0f172a] border border-white/10 rounded-sm px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-accent transition-colors text-sm"
+              >
+            </div>
+
+            <div>
+              <span class="block text-xs font-bold text-accent uppercase tracking-wider mb-2">¿Tenías Registro Vigente?</span>
+              <div class="flex gap-4">
+                <label class="flex items-center gap-2 cursor-pointer group">
+                  <div class="relative flex items-center">
+                    <input type="radio" name="license" value="Sí" class="peer sr-only" checked>
+                    <div class="w-4 h-4 border border-gray-500 rounded-full peer-checked:border-accent peer-checked:bg-accent transition-all"></div>
+                  </div>
+                  <span class="text-gray-300 text-sm group-hover:text-white">Sí</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer group">
+                  <div class="relative flex items-center">
+                    <input type="radio" name="license" value="No" class="peer sr-only">
+                    <div class="w-4 h-4 border border-gray-500 rounded-full peer-checked:border-accent peer-checked:bg-accent transition-all"></div>
+                  </div>
+                  <span class="text-gray-300 text-sm group-hover:text-white">No / Vencido</span>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <span class="block text-xs font-bold text-accent uppercase tracking-wider mb-2">¿Tuviste Lesiones Físicas?</span>
+              <div class="flex gap-4">
+                <label class="flex items-center gap-2 cursor-pointer group">
+                  <div class="relative flex items-center">
+                    <input type="radio" name="injuries" value="Sí" class="peer sr-only" checked>
+                    <div class="w-4 h-4 border border-gray-500 rounded-full peer-checked:border-accent peer-checked:bg-accent transition-all"></div>
+                  </div>
+                  <span class="text-gray-300 text-sm group-hover:text-white">Sí</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer group">
+                  <div class="relative flex items-center">
+                    <input type="radio" name="injuries" value="No" class="peer sr-only">
+                    <div class="w-4 h-4 border border-gray-500 rounded-full peer-checked:border-accent peer-checked:bg-accent transition-all"></div>
+                  </div>
+                  <span class="text-gray-300 text-sm group-hover:text-white">No (Solo daños materiales)</span>
+                </label>
+              </div>
+            </div>
+
+        </div>
+
+        <div class="bg-[#0b1120] px-4 py-4 sm:px-6 sm:flex sm:flex-row-reverse border-t border-white/5">
+          <button type="button" id="send-whatsapp" class="w-full inline-flex justify-center items-center gap-2 rounded-sm bg-accent px-3 py-3 text-sm font-bold uppercase tracking-widest text-primary shadow-sm hover:bg-white transition-colors sm:ml-3 sm:w-auto">
+            <span>Enviar a WhatsApp</span>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Lógica del Modal
+  const modal = document.getElementById('claim-modal');
+  const backdrop = modal?.querySelector('.modal-backdrop');
+  const panel = modal?.querySelector('.modal-panel');
+  const closeBtn = document.getElementById('close-modal');
+  const sendBtn = document.getElementById('send-whatsapp');
+  
+  // Elementos del formulario
+  const inputCompany = document.getElementById('company') as HTMLInputElement;
+  const inputDate = document.getElementById('date') as HTMLInputElement;
+  // Para radio buttons usamos querySelector
+  
+  // Función para ABRIR modal
+  window.openClaimModal = () => {
+    if(!modal || !backdrop || !panel) return;
+    modal.classList.remove('hidden');
+    // Pequeño delay para permitir que el renderizado procese el 'hidden' antes de la transición
+    setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        panel.classList.remove('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
+        panel.classList.add('opacity-100', 'translate-y-0', 'sm:scale-100');
+    }, 10);
+  };
+
+  // Función para CERRAR modal
+  function closeModal() {
+    if(!modal || !backdrop || !panel) return;
+    
+    backdrop.classList.add('opacity-0');
+    panel.classList.remove('opacity-100', 'translate-y-0', 'sm:scale-100');
+    panel.classList.add('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
+
+    setTimeout(() => {
+        modal.classList.add('hidden');
+    }, 300); // Esperar a que termine la transición
+  }
+
+  // Event Listeners
+  closeBtn?.addEventListener('click', closeModal);
+  
+  // Cerrar si clickean fuera
+  modal?.addEventListener('click', (e) => {
+    if (e.target === backdrop || (e.target as Element).closest('.modal-backdrop')) {
+        closeModal();
+    }
+  });
+
+  // Enviar a WhatsApp
+  sendBtn?.addEventListener('click', () => {
+    const company = inputCompany.value || "No especificada";
+    const date = inputDate.value || "No especificada";
+    
+    const licenseRadio = document.querySelector('input[name="license"]:checked') as HTMLInputElement;
+    const license = licenseRadio ? licenseRadio.value : "No especificado";
+
+    const injuriesRadio = document.querySelector('input[name="injuries"]:checked') as HTMLInputElement;
+    const injuries = injuriesRadio ? injuriesRadio.value : "No especificado";
+
+    // Construir mensaje
+    const message = `Hola Estudio Sevilla, quiero iniciar un reclamo.%0A%0A📋 *Datos del Caso:*%0A- Compañía que chocó: ${company}%0A- Fecha: ${date}%0A- ¿Tenía Registro?: ${license}%0A- ¿Hubo Lesiones?: ${injuries}`;
+
+    // Reemplaza con tu número real
+    const phone = "5491158298302"; 
+    
+    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    closeModal();
+  });
+
+  // Exponer la función al objeto window para poder llamarla desde otros componentes
+  declare global {
+    interface Window {
+        openClaimModal: () => void;
+    }
+  }
+</script>

@@ -1,0 +1,91 @@
+---
+// src/components/ImpactGallery.astro
+
+// Array con tus 4 fotos locales.
+// IMPORTANTE: Asegurate de que la extensión (.jpg, .png, .webp) coincida con tus archivos.
+const images = [
+  "/casos/choque_1.jpeg", 
+  "/casos/choque_2.jpeg",
+  "/casos/choque_3.jpeg",
+  "/casos/choque_4.jpeg",
+];
+---
+
+<section class="py-20 bg-[#0f172a] border-t border-white/5 relative overflow-hidden">
+  
+  <div class="container mx-auto px-6 mb-10 text-center">
+    <span class="text-accent font-title font-bold tracking-widest uppercase text-xs">
+        Casos Reales
+    </span>
+    <h3 class="text-2xl md:text-3xl font-serif-logo font-bold text-white mt-2">
+        La gravedad del impacto <br> <span class="text-gray-500 italic">exige una defensa a la altura.</span>
+    </h3>
+  </div>
+
+  <div class="relative flex overflow-x-hidden group">
+    
+    <div class="flex animate-marquee whitespace-nowrap gap-6 py-4">
+      
+      {/* --- BLOQUE 1 --- */}
+      {images.map((img) => (
+        <div class="relative w-[300px] h-[200px] md:w-[400px] md:h-[280px] flex-shrink-0 rounded-sm overflow-hidden border border-white/10 group-hover:border-accent/50 transition-colors duration-500 grayscale hover:grayscale-0 cursor-crosshair">
+          <img 
+            src={img} 
+            alt="Accidente de moto caso real" 
+            class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 pointer-events-none"></div>
+          <div class="absolute bottom-4 left-4 pointer-events-none">
+            <span class="bg-accent text-primary text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider">Caso Cerrado</span>
+          </div>
+        </div>
+      ))}
+
+      {/* --- BLOQUE 2 (Repetición) --- */}
+      {images.map((img) => (
+        <div class="relative w-[300px] h-[200px] md:w-[400px] md:h-[280px] flex-shrink-0 rounded-sm overflow-hidden border border-white/10 group-hover:border-accent/50 transition-colors duration-500 grayscale hover:grayscale-0 cursor-crosshair">
+          <img src={img} alt="Accidente caso real" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 pointer-events-none"></div>
+          <div class="absolute bottom-4 left-4 pointer-events-none"><span class="bg-accent text-primary text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider">Caso Cerrado</span></div>
+        </div>
+      ))}
+
+       {/* --- BLOQUE 3 (Repetición extra por seguridad) --- */}
+       {images.map((img) => (
+        <div class="relative w-[300px] h-[200px] md:w-[400px] md:h-[280px] flex-shrink-0 rounded-sm overflow-hidden border border-white/10 group-hover:border-accent/50 transition-colors duration-500 grayscale hover:grayscale-0 cursor-crosshair">
+          <img src={img} alt="Accidente caso real" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 pointer-events-none"></div>
+          <div class="absolute bottom-4 left-4 pointer-events-none"><span class="bg-accent text-primary text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider">Caso Cerrado</span></div>
+        </div>
+      ))}
+
+      {/* --- BLOQUE 4 (Repetición final) --- */}
+      {images.map((img) => (
+        <div class="relative w-[300px] h-[200px] md:w-[400px] md:h-[280px] flex-shrink-0 rounded-sm overflow-hidden border border-white/10 group-hover:border-accent/50 transition-colors duration-500 grayscale hover:grayscale-0 cursor-crosshair">
+          <img src={img} alt="Accidente caso real" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 pointer-events-none"></div>
+          <div class="absolute bottom-4 left-4 pointer-events-none"><span class="bg-accent text-primary text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider">Caso Cerrado</span></div>
+        </div>
+      ))}
+
+    </div>
+  </div>
+
+  <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#0f172a] to-transparent z-10 pointer-events-none"></div>
+  <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#0f172a] to-transparent z-10 pointer-events-none"></div>
+
+</section>
+
+<style>
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Ajustado para el flujo continuo */
+  }
+  .animate-marquee {
+    animation: marquee 60s linear infinite; /* Más lento (60s) para que se aprecie mejor */
+  }
+  /* Pausar animación al pasar el mouse */
+  .group:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+</style>

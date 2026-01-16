@@ -90,7 +90,7 @@
       
       // Actualizar UI
       if (bar) bar.style.width = `${progress}%`;
-      if (counter) counter.innerText = progress;
+      if (counter) counter.innerText = String(progress);
 
       // Efecto: A mayor carga, más vibra la moto ("Al corte")
       if (progress > 50 && bikeSvg) {
