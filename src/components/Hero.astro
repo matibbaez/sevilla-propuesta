@@ -1,0 +1,103 @@
+---
+// src/components/Hero.astro
+---
+
+<section id="inicio" class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-primary">
+    
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/40 z-10"></div>
+        
+        <div class="absolute inset-0 z-20 opacity-[0.03] pointer-events-none" style="background-image: url('https://grainy-gradients.vercel.app/noise.svg');"></div>
+
+        <img 
+            src="https://images.unsplash.com/photo-1617858854672-254d4d007266?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+            class="w-full h-full object-cover object-[center_left] grayscale brightness-[0.5] contrast-125"
+            alt="Fondo Moto"
+        />
+    </div>
+
+    <div class="container mx-auto px-6 relative z-20">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+        
+        <div class="text-center lg:text-left">
+            
+            <div class="inline-flex items-center gap-2 px-3 py-1 border border-accent/30 bg-accent/5 rounded-full text-accent font-title font-medium uppercase tracking-widest text-[11px] mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+            Especialistas en Siniestros Viales
+            </div>
+
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 font-serif-logo">
+            Defendemos tu <br>
+            <span class="text-accent italic">Indemnización.</span>
+            </h1>
+            
+            <p class="text-gray-300 text-lg font-light mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+            Sabemos lo que vale tu integridad física y tu vehículo. <br class="hidden md:block">
+            Gestión legal experta con <strong>honorarios a resultado</strong>.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+                <a href="https://wa.me/5491100000000" class="flex items-center justify-center gap-3 px-8 py-4 bg-accent hover:bg-accent-dark text-primary font-bold uppercase tracking-widest rounded-sm transition-all hover:-translate-y-1 shadow-lg hover:shadow-accent/20">
+                <span>Iniciar Reclamo</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+                <a href="#servicios" class="px-8 py-4 border border-white/10 text-white font-bold uppercase tracking-widest rounded-sm hover:bg-white/5 transition-colors">
+                Nuestros Servicios
+                </a>
+            </div>
+            
+            <div class="flex items-center justify-center lg:justify-start gap-8 border-t border-white/5 pt-6">
+                <div class="flex items-center gap-3">
+                <div class="p-2 bg-surface rounded-full text-accent">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <div class="text-left">
+                    <span class="block text-white font-bold text-xs uppercase tracking-wider">Sin Gastos</span>
+                    <span class="text-gray-500 text-[10px] uppercase">Adelantados</span>
+                </div>
+                </div>
+                <div class="flex items-center gap-3">
+                <div class="p-2 bg-surface rounded-full text-accent">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <div class="text-left">
+                    <span class="block text-white font-bold text-xs uppercase tracking-wider">Atención 24hs</span>
+                    <span class="text-gray-500 text-[10px] uppercase">Respuesta Inmediata</span>
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="hidden lg:flex justify-end relative">
+            <div class="absolute inset-0 bg-accent/10 blur-[80px] rounded-full pointer-events-none"></div>
+            
+            <div class="relative bg-surface/80 backdrop-blur-md border border-white/10 p-8 rounded-sm shadow-2xl max-w-sm w-full">
+                <div class="flex items-center gap-4 mb-6 border-b border-white/5 pb-4">
+                    <div class="w-10 h-10 bg-accent text-primary flex items-center justify-center font-serif-logo font-bold rounded-sm text-lg">ES</div>
+                    <div>
+                    <span class="block text-white font-title font-bold uppercase text-sm tracking-wide">Caso de Éxito</span>
+                    <span class="block text-accent text-xs">Villa Crespo, CABA</span>
+                    </div>
+                </div>
+                
+                <div class="space-y-4 font-body">
+                    <div class="flex justify-between items-center text-sm">
+                    <span class="text-gray-400">Daños Materiales</span>
+                    <span class="text-white font-bold">100% Cubierto</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                    <span class="text-gray-400">Lesiones</span>
+                    <span class="text-white font-bold">Máxima Escala</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm pt-4 border-t border-white/5">
+                    <span class="text-gray-400">Tiempo de Gestión</span>
+                    <span class="text-accent font-bold font-title text-lg">45 DÍAS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</section>
