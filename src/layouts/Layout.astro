@@ -13,7 +13,7 @@ const { title } = Astro.props;
 <html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Estudio Sevilla | Abogados Especialistas en Tránsito y Siniestros" />
+    <meta name="description" content="Estudio Sevilla | Abogados Especialistas en Tránsito y Siniestros. No firmes con el seguro sin asesoramiento previo." />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
@@ -21,6 +21,18 @@ const { title } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://estudiosevilla.com/" />
+    <meta property="og:title" content="Estudio Sevilla | Especialistas en Accidentes de Moto" />
+    <meta property="og:description" content="¿Tuviste un accidente? No firmes con el seguro sin asesoramiento. Defendemos tu indemnización al máximo valor." />
+    <meta property="og:image" content="/social-preview.jpg" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://estudiosevilla.com/" />
+    <meta property="twitter:title" content="Estudio Sevilla | Especialistas en Accidentes de Moto" />
+    <meta property="twitter:description" content="¿Tuviste un accidente? No firmes con el seguro sin asesoramiento. Defendemos tu indemnización al máximo valor." />
+    <meta property="twitter:image" content="/social-preview.jpg" />
+
     <script is:inline src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <script is:inline>
       // Scroll suave pero más rápido para que no se sienta "pesado"
@@ -39,6 +51,8 @@ const { title } = Astro.props;
 
     <title>{title}</title>
   </head>
-  <body class="antialiased selection:bg-[#C5A059] selection:text-white"> <Loader /> <slot />
+  <body class="antialiased selection:bg-[#C5A059] selection:text-white"> 
+    <Loader /> 
+    <slot />
   </body>
 </html>
